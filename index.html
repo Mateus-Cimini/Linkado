@@ -8,45 +8,66 @@
     <title>Linkado</title>
   </head>
   <body>
-    <header class="header">
-      <div class="container">
+    <header id="header" class="header fixed-top">
+      <nav class="navbar navbar-expand-lg h-100">
 
-        <div class="navbar">
-
-          <div class="brand">
-            <a href="#" class="nav-link">
-              <img src="img/logo-lobo.png" alt="logo" height="100px"> 
-              <h1>Linkado</h1>
-            </a>
-          </div>
-
-          <div>
-            <nav>
-              <ul class="nav">
-                <li class="nav-item">
-                  <a class="nav-link active" href="#">Inicio</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">Links</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">Contato</a>
-                </li>
-              </ul>
-
-            </nav>
-          </div>
-
-          <div class="start">
-            <button class="btn" type="button">Adicionar links</button>
-          </div>
+        <div class="brand">
+          <a href="#" class="nav-link">
+            <img src="img/logo-lobo.png" alt="logo" height="100px"> 
+            <h1>Linkado</h1>
+          </a>
         </div>
 
-      </div>
-    </header>
+        <button type="button" class="navbar-toggler ms-auto" data-bs-toggle="collapse" data-bs-target="#navbarMenu">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarMenu"> 
+          <ul class="nav">
+            <li class="nav-item">
+              <a id="linkInicio" class="nav-link active" href="#inicio">Inicio</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#links">Links</a>
+            </li>
+            <li class="nav-item">
+
+              <a class="nav-link" href="#final">Contato</a>
+            </li>
+
+          </ul> 
+
+
+
+          <div class="start ms-lg-3">
+            <button class="btn" type="button">Adicionar links</button>
+
+          </div>
+
+        </div> 
+
+      </nav>    
+    </header>   
+
+
+
+    <div class="" data-bs-spy="scroll" data-bs-target="#header">
+
+      <section id="inicio" ></section>
+
+
+      <section id="links"></section>
+
+
+      <section id="final"></section>
+
+    </div>
+
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
     <script src="js/script.js"></script>
+
   </body>
 </html>
