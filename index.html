@@ -8,7 +8,7 @@
     <title>Linkado</title>
   </head>
   <body>
-    <header id="header" class="header fixed-top">
+    <header id="header" class="header sticky-top">
       <nav class="navbar navbar-expand-lg h-100">
 
         <div class="brand">
@@ -41,7 +41,6 @@
 
           <div class="start ms-lg-3">
             <button class="btn" type="button">Adicionar links</button>
-
           </div>
 
         </div> 
@@ -51,9 +50,43 @@
 
 
 
-    <div class="" data-bs-spy="scroll" data-bs-target="#header">
+    <div data-bs-spy="scroll" data-bs-target="#header">
 
-      <section id="inicio" ></section>
+      <section id="inicio" >
+        <div class="custom-badge">
+          <i class="bi bi-stars"></i>
+           0 Links adicionados com sucesso    
+        </div>
+
+        <div class="titleHome">
+          <h2>Seu repositorio pessoal</h2>
+          <h2>de links</h2>
+        </div>
+
+        <div class="text">
+          <p>Aqui voce pode salvar seus links de forma organizada e particular sem que ninguem tenha acesso a eles</p>
+        </div>
+
+          <div id='btnHome' class="start ms-lg-3">
+            <button class="btn" type="button">Adicionar links</button>
+          </div>
+
+
+        <div class="info">
+          <span class="info-span1">
+            <p class="info-number">0</p> 
+            <p class="info-text">links</p> 
+          </span>
+          <span class="info-span2">
+            <p class="info-number">0</p>
+            <p class="info-text">playlits</p> 
+          </span>
+          <span class="info-span3">
+            <p class="info-number">0</p>
+            <p class="info-text">favoritos</p> 
+          </span>
+        </div>
+      </section>
 
 
       <section id="links"></section>
@@ -66,7 +99,7 @@
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
-
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
     <script src="js/script.js"></script>
 
   </body>
