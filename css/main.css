@@ -71,7 +71,7 @@ nav.navbar {
 }  
   
   
-.start button{  
+.start button {  
   background-color: #5fff85;  
   color: #000;  
   border: 1px solid #5fff85;  
@@ -158,7 +158,16 @@ nav.navbar {
   display: flex;
   justify-content: center;
   padding-bottom: 48px;
+  z-index: 100;
 }
+
+#btnHome:hover {  
+  transform: scale(1.1);  
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);  
+  filter: blur(1px);
+}  
+
+
 
 .info {
   display: flex;
