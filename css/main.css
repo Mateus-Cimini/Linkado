@@ -335,10 +335,32 @@ nav.navbar {
   font-weight: 700;
 }
 
+#final {
+  background-color: #111;
+}
+
+.footerMain {
+  flex-direction: row;
+}
+
+.brand p {
+  padding:0px;
+}
+
+#socialLinks a i {
+  padding: 0px 0px:;
+}
+
 /* tablets */
 @media (max-width: 992px) {  
-  body {
-    background-color: purple;
+   #linkText {
+    text-align: center;
+  }
+  
+  #linkSections {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr); 
+    gap: 10px;
   }
  
   .nav { 
@@ -379,9 +401,16 @@ nav.navbar {
 
 /* celulares grandes */
 @media (max-width: 768px) {
-  body {
-    background-color: red;
+  #linkText {
+    text-align: center;
   }
+  
+  #linkSections {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr); 
+    gap: 10px;
+  }
+
 }
 
 /* celulares pequenos */
