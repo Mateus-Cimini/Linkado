@@ -397,6 +397,12 @@ nav.navbar {
     max-width: 300px;
   }
 
+  #linkCards .container,
+  #linkSections .container {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
   #linkText p {
     font-size: 18px;
     max-width: 300px;
