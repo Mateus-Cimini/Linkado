@@ -334,28 +334,31 @@ nav.navbar {
 .ms-1{
   font-weight: 700;
 }
+
+/* tablets */
+@media (max-width: 992px) {  
+  body {
+    background-color: purple;
+  }
  
-@media (max-width: 992px) {   
-  
-  .nav {  
-    width: 100%;  
-    justify-content: center;  
-    margin-top: 8px;  
+  .nav { 
+    width: 100%; 
+    justify-content: center; 
+    margin-top: 8px; 
     flex-direction: column;
     background-color: #111;
     border-bottom: solid 1px rgba(204, 204, 204, 0.4);
-  }  
-
+  } 
   #linkInicio {
-    border-top: solid 1px rgba(204, 204, 204, 0.4); 
+    border-top: solid 1px rgba(204, 204, 204, 0.4);
   }
-  
-  .start {  
-    width: 100%;  
-    display: flex;  
-    justify-content: center;  
-    margin-top: 8px;  
-  }  
+ 
+  .start { 
+    width: 100%; 
+    display: flex; 
+    justify-content: center; 
+    margin-top: 8px; 
+  } 
 
   .navbar-toggler {
     background-color: #5fff85;
@@ -372,5 +375,36 @@ nav.navbar {
   .info-text {
     text-align: center;
   }
+}
 
-}  
+/* celulares grandes */
+@media (max-width: 768px) {
+  body {
+    background-color: red;
+  }
+}
+
+/* celulares pequenos */
+@media (max-width: 576px) {
+  body {
+    background-color: black;
+  }
+
+  #linkText h2 {
+    font-size: 32px;
+    text-align: center;
+    max-width: 300px;
+  }
+
+  #linkText p {
+    font-size: 18px;
+    max-width: 300px;
+  }
+
+  #linkSections {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr); 
+    gap: 10px;
+  }
+}
+
