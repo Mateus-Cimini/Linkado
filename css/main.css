@@ -217,4 +217,16 @@ nav.navbar {
     background-color: #5fff85;
   }
 
+  .titleHome {
+    text-align: center;
+  }
+
+  .info {
+    flex-direction: column;
+  }
+
+  .info-text {
+    text-align: center;
+  }
+
 }  
