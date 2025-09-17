@@ -388,6 +388,7 @@ nav.navbar {
 @media (max-width: 576px) {
   body {
     background-color: black;
+    overflow-x: hidden;
   }
 
   #linkText h2 {
