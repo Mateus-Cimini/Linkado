@@ -380,12 +380,18 @@ color: #5fff85;
 }
 
 .footerSupport button,
-.footerOthers a {
+.footerOthers a,
+.footerSupport a{
   display: flex;
   align-items: flex-start;
   text-align: start ;
   color: #fff;
 }
+
+.footerSupport a {
+ color: #fff;
+}
+
 
 .footerOthers {
   display: flex;
@@ -461,6 +467,17 @@ display: flex;
   margin-bottom: 0;
 }
 
+.modal-body,
+.modal-header,
+.modal-footer {
+  background-color: #111;
+  color: #fff;
+}
+
+.btn-close {
+  color: #fff;
+}
+
 /* tablets */
 @media (max-width: 992px) { 
 
@@ -528,6 +545,9 @@ display: flex;
   .contentFormEmail {
     justify-content: flex-end;
   }
+
+
+
 }
 
 /* celulares grandes */
@@ -544,7 +564,8 @@ display: flex;
 
   .footerMain,
   .footerSupport button,
-  .footerOthers a{
+  .footerOthers a,
+  .footerSupport a{
     justify-content: center;
     text-align: center;
   }

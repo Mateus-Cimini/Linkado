@@ -308,21 +308,88 @@
 
                 <div class="footerSupport col-12 col-sm-6 col-lg-4 ">
                   <h4>Suporte</h4>
-                  <button class="btn">Como funciona?</button>
-                  <button class="btn">Quem tem acesso?</button>
-                  <button class="btn">Por quanto tempo os dados ficam guardados?</button>
-                  <button class="btn">Reportar bug</button>
+                  <button class="btn" data-bs-toggle="modal" data-bs-target="#howItWorks">Como funciona?</button>
+                  <button class="btn" data-bs-toggle="modal" data-bs-target="#whoHasAcess">Quem tem acesso?</button>
+                  <button class="btn" data-bs-toggle="modal" data-bs-target="#savedData">Por quanto tempo os dados ficam guardados?</button>
+                  <a href="mailto:mateusmateus122333@gmail.com" target="_blank" class="btn">Reportar bug</a>
                 </div>
+
+                <!-- Modais do suporte -->
+                <!-- Modal Como funciona -->
+                <div id="howItWorks" class="modal fade">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title">Como funciona?</h5>
+                        <button class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                        <ol>
+                          <li><strong>Adicionar:</strong> link preencha o título, link do vídeo e, opcionalmente, um link de imagem personalizada. Escolha a seção onde o card será colocado e clique em "Adicionar".</li>
+                          <li><strong>Editar ou excluir:</strong> use os botões no card para alterar informações ou remover vídeos.</li>
+                          <li><strong>Seções:</strong> organize seus vídeos em diferentes seções para facilitar a visualização.</li>
+                          <li><strong>Backup:</strong> você pode exportar todos os vídeos como JSON para salvar, e importar depois para restaurar seus cards.</li>
+                        </ol>
+                      </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-danger" data-bs-dismiss="modal">Voltar</button>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Modal Quem tem acesso -->
+                <div id="whoHasAcess" class="modal fade">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title">Quem tem acesso?</h5>
+                        <button class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                        <p>Todos os links adicionados ficam <strong>somente no seu navegador</strong> e não são compartilhados com ninguém. Nenhum dado é enviado para servidores externos, garantindo que seus vídeos e informações permaneçam privados.</p>
+                      </div>
+                      <div class="modal-footer">
+                        <button class="btn btn-danger" data-bs-dismiss="modal">Voltar</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+
+
+                <!-- Por quanto tempo os dados ficam salvos -->
+                <div id="savedData" class="modal fade">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title">Por quanto tempo os dados ficam salvos?</h5>
+                        <button class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                        <p>Os dados ficam salvos no seu navegador <strong>indefinidamente</strong>, enquanto você não limpar o <code>localStorage</code>.</p>
+                        <p>Mesmo fechando ou reiniciando o navegador, seus cards permanecem disponíveis. Mas nunca apague o cache antes de fazer backup</p>
+                      </div>
+                      <div class="modal-footer">
+                        <button class="btn btn-danger" data-bs-dismiss="modal">Voltar</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+
+
+
 
                 <div class="footerOthers col-12 col-sm-6 col-lg-3">
                   <h4>Outros projetos</h4>
-                  <a href="https://young-rift.vercel.app/" target="_blank">Young-Rift</a>
-                  <a href="https://montando-sua-pool-6tvh.vercel.app/" target="_blank">Montando sua Pool</a>
-                  <a href="https://calcula-media-enem.vercel.app/" target="_blank">Calculadora media ENEN</a>
+                        <a href="https://young-rift.vercel.app/" target="_blank">Young-Rift</a>
+                        <a href="https://montando-sua-pool-6tvh.vercel.app/" target="_blank">Montando sua Pool</a>
+                        <a href="https://calcula-media-enem.vercel.app/" target="_blank">Calculadora media ENEN</a>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
-          </div>
 
 
           <div class="container">
@@ -333,9 +400,9 @@
                   Quer entrar em contato? Deixe seu e-mail e eu retornarei assim que possível.</p>
               </div>
               <div class="form col-12 col-lg-6 col-sm-6">
-                <form class="contentFormEmail">
+                <form class="contentFormEmail d-flex gap-2">
                   <div id="formEmail">
-                    <label class="visually-hidden" for="#inputEmail">Seu melhor e-mail</label>
+                    <label class="visually-hidden" for="inputEmail">Seu melhor e-mail</label>
                     <input type="email" id="inputEmail" class="form-control" placeholder="Seu melhor e-mail">
                   </div>
 
