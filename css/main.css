@@ -167,6 +167,10 @@ nav.navbar {
   filter: blur(1px);
 }  
 
+#btnHome a {
+  background-color: #5fff85;
+}
+
 
 
 .info {

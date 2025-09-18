@@ -41,7 +41,7 @@
 
 
           <div class="start ms-lg-3">
-            <button class="btn" type="button">Adicionar links</button>
+            <button class="btn" type="button"  data-bs-toggle="modal" data-bs-target="#addLink">Adicionar links</button>
           </div>
 
         </div> 
@@ -69,7 +69,7 @@
         </div>
 
         <div id='btnHome' class="start ms-lg-3">
-          <button class="btn" type="button">Adicionar links</button>
+          <a href="#links" class="btn">Seus links ↓</a>
         </div>
 
 
@@ -126,6 +126,68 @@
 
 
         <div id="linkCards">
+          <div id='btnHome' class="start ms-lg-3">
+            <button class="btn" type="button" data-bs-toggle="modal" data-bs-target="#addLink">Adicionar links</button>
+          </div>
+
+          <div id="addLink" class="modal fade">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-body">
+
+                  <form class="row g-3">
+
+                    <div class="col-md-4">
+                      <label for="#inputLink" class="form-label">Link:</label>
+                      <div class="input-group has-validation">  
+                        <span class="input-group-text bg-transparent"><i class="bi bi-paperclip"></i></span>
+                        <input id="inputLink" type="url" class="form-control bg-transparent" required>
+                        <span class="valid-feedback">URl aprovada</span>
+                      </div>
+                    </div>
+
+                    <div class="col-md-4">
+                      <label for="#inputTitle" class="form-label">Titulo para o card:</label>
+                      <input id="inputTitle" type="text" class="form-control" required>
+                      <span class="valid-feedback">Titulo aprovado</span>
+                    </div>
+
+                    <div class="col-md-4">descriçao
+                      <label for="" class="form-label"></label>
+                      <input type="" class="form-control">
+                      <span class="valid-feedback"></span>
+                    </div>
+
+                    <div class="col-md-4">img
+                      <label for="" class="form-label"></label>
+                      <input type="" class="form-control">
+                      <span class="valid-feedback"></span>
+                    </div>
+
+                    <div class="col-md-4">tags
+                      <label for="" class="form-label"></label>
+                      <input type="" class="form-control">
+                      <span class="valid-feedback"></span>
+                    </div>
+
+                    <div class="col-md-4">favorito
+                      <label for="" class="form-label"></label>
+                      <input type="" class="form-control">
+                      <span class="valid-feedback"></span>
+                    </div>
+
+                  </form>
+
+                </div>
+                <div class="modal-footer">
+                  <button type="submit" class="btn btn-success">Adicionar</button>
+                  <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
           <div class="container px-3">
             <div class="row g-5">
               <div class="col-12 col-sm-6 col-lg-4">
