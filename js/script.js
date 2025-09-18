@@ -24,46 +24,38 @@
 // input tags card
 
 const input = document.getElementById('tagsInput');
+const addBtn = document.getElementById('addTagBtn');
 const container = document.getElementById('tagsContainer');
 const error = document.getElementById('tagsError');
 
 let tags = [];
 
-input.addEventListener('keydown', (e) => {
-  if (e.key === 'Enter') {
-    e.preventDefault();
-    const value = input.value.trim();
-
-
-    if (!value || value.length > 12) {
-      error.style.display = 'block'
-      return
-    } ;
-    
-    if (tags.length >= 3) {
-      error.style.display = 'block'
-      return
-    };
-
-    tags.push(value);
-    renderTags();
-    input.value = '';
-    error.style.display = 'none'
-  };
-});
-
-function renderTags() {
-  container.innerHTML = ''
-  tags.forEach((tag, index) => {
-    const span = document.createElement('span')
-    span.className = 'badge bg-primary me-1'
-    span.textContent = tag
-    span.addEventListener('click', () => {
-      tags.splice(index, 1)
-      renderTags()
-    })
-    container.appendChild(span)
-  })
+function addTag() {
+  const value = input.value.trim();
+  if (!value || value.length > 12 || tags.length >= 3) {
+    error.style.display = 'block';
+    return;
+  }
+  tags.push(value);
+  renderTags();
+  input.value = '';
+  error.style.display = 'none';
 }
 
+addBtn.addEventListener('click', addTag);
+input.addEventListener('keydown', (e) => { if(e.key === 'Enter') addTag() });
+
+function renderTags() {
+  container.innerHTML = '';
+  tags.forEach((tag, index) => {
+    const span = document.createElement('span');
+    span.className = 'badge bg-primary me-1';
+    span.textContent = tag;
+    span.addEventListener('click', () => {
+      tags.splice(index, 1);
+      renderTags();
+    });
+    container.appendChild(span);
+  });
+}
 

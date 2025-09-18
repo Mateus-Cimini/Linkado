@@ -172,13 +172,20 @@
                     </div>
 
                     <div class="col-md-4">
-                      <label for="tagsInput" class="form-label">Tags (máx. 3, 12 caracteres cada)</label>
-                      <div id="tagsContainer" class="mb-2"></div>
-                      <input type="text" id="tagsInput" class="form-control bg-transparent" placeholder="Digite uma tag e precione Enter">
-                      <span class="valid-feedback">Otimas tags</span>
-                      <span id="tagsError" class="invalid-feedback">Máx. 3 tags, 12 caracteres cada</span>
-                    </div>
+  <label for="tagsInput" class="form-label">Tags (máx. 3, 12 caracteres cada)</label>
 
+  <div class="input-group mb-2">
+    <input type="text" id="tagsInput" class="form-control bg-transparent" placeholder="Digite uma tag e pressione Enter">
+    <button id="addTagBtn" type="button" class="btn btn-primary">Adicionar</button>
+  </div>
+
+  <div id="tagsContainer" class="mb-2"></div>
+  <span class="valid-feedback">Ótimas tags</span>
+  <span id="tagsError" class="invalid-feedback">Máx. 3 tags, 12 caracteres cada</span>
+</div>
+
+
+ 
                     <div class="col-md-4">
                       <label for="inputSection" class="form-label">Seções:</label>
                       <select id="inputSection" class="form-select bg-transparent" multiple required>              
