@@ -1,0 +1,131 @@
+#final {
+  background-color: #111;
+  padding-top: 48px;
+}
+
+.footerMain,
+.footerEmail {
+  padding-bottom: 32px;
+  border-bottom: solid 1px #555;
+}
+
+.footerBrand .brand a h1  {
+ font-size: 20px;
+  font-weight: 700;
+}
+
+.footerBrand p {
+  font-size: 16px;
+  color: #fff;
+}
+
+.footerBrand p strong{
+color: #5fff85;
+}
+
+#socialLinks a i {
+  color: #5fff85;
+}
+
+#socialLinks a i:hover,
+.footerOthers a:hover{
+  color: #333;
+}
+
+.footerSupport {
+  display: flex;
+  flex-direction: column;
+}
+
+.footerSupport h4,
+.footerOthers h4 {
+  color: #5fff85;
+}
+
+.footerSupport button,
+.footerOthers a,
+.footerSupport a{
+  display: flex;
+  align-items: flex-start;
+  text-align: start ;
+  color: #fff;
+}
+
+.footerSupport a {
+ color: #fff;
+}
+
+
+.footerOthers {
+  display: flex;
+  flex-direction: column;
+}
+
+.footerEmail {
+ padding: 32px 0px; 
+}
+
+.footerEmail .text {
+ display: flex;
+flex-direction: column;
+  align-items: flex-start;
+}
+
+.footerEmail .text h4 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
+}
+
+.footerEmail .text p {
+  font-size: 14px;
+  color: #fff;
+}
+
+.footerEmail .form {
+display: flex;
+  justify-content: flex-end;
+}
+
+.contentFormEmail {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+#inputEmail {
+  background-color: #000;
+  color: #fff;
+}
+
+#inputEmail:focus {
+  border-color: #5fff85;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(0,128,0,0.3);
+}
+
+#inputEmail::placeholder {
+  color: #fff;
+}
+
+.formBtn button {
+  color: #000;
+  font-weight: 600;
+  transition: transform 0.5s ease;
+}
+
+.formBtn button:hover {
+  transform: scale(1.1);
+  color: #5fff85;
+}
+
+.footerEnd {
+ padding-bottom: 0px;
+ margin-bottom: 0px;
+}
+
+.footerEnd p {
+  color: #fff;
+  font-size: 14px;
+  margin-bottom: 0;
+}

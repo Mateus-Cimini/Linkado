@@ -1,0 +1,142 @@
+.importAndExport {
+  margin-top: 24px;
+  margin-left: 16px;
+}
+
+#linkText {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 85px 0px 10px 0px;
+}
+ 
+#linkText h2 {
+ color: #fff;
+  font-size: 48px;
+  font-weight: 700;
+  height: 90px;
+}
+
+#linkText p {
+  color: #fff;
+  font-size: 18px;
+  max-width: 550px;
+  text-align: center;
+
+}
+
+#linkText p strong {
+  color: #5fff85;
+}
+
+
+#linkSections {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 70px;
+}
+
+
+.tab-btn {
+  border: none;
+  background: transparent;
+  color: #fff; 
+}
+
+.tab-btn.active {
+  border: 1px solid #ccc;
+  color: #fff;
+}
+
+.tab-btn:hover {
+  background-color: #111;
+}
+
+.tag-btn {
+  border: solid 2px #ccc;
+  background: transparent;
+  border-radius: 50px;
+  font-size: 12px;
+  font-weight: 700;
+  margin: 10px 0px;
+  color: #fff;
+}
+
+.card-body, .card-footer {
+  background-color: #111;
+}
+
+.card {
+  margin-top: 16px;
+}
+
+.card-title {
+  color: #fff;
+  font-size: 25px;
+  font-weight: 700;
+}
+
+.card-text {
+  font-size: 16px;
+  color: #fff;
+}
+
+.text-green { 
+  color: #5fff85; 
+  font-size: 16px; 
+}
+
+.card-icons-footer {
+  display: flex;
+  gap: 2px;
+}
+
+.card-icons-footer button {
+  padding: 0;
+  border: none;
+  background: none;
+}
+
+.card-icons-footer i {
+  display: flex;
+  border-radius: 10%;
+  padding: 4px;
+}
+
+.card-icons-footer .bi-pencil {
+  background-color: orange;
+}
+
+.card-icons-footer .bi-trash {
+  background-color: red;
+}
+
+
+.card-img-overlay.active i {
+  display: block;
+  color: yellow;
+}
+
+.card-img-overlay i {
+  color: rgba(0, 0, 0, 0.5);
+  font-size: 25px;
+}
+
+#readMore {
+  margin: 64px 10%;
+}
+
+#readMore button {
+  color: #fff;
+  font-weight: 600;
+  z-index: 10;
+}
+
+#readMore button:hover {
+  color: #5fff85;
+}
+
+.ms-1{
+  font-weight: 700;
+}

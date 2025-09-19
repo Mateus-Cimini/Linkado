@@ -1,0 +1,21 @@
+.modal-body,
+.modal-header,
+.modal-footer {
+  background-color: #111;
+  color: #fff;
+}
+.modal form input:focus,
+.modal form input::placeholder {
+  color: #666;
+}
+
+
+.modal form input {
+  color: #666;
+  opacity: 100%;
+}
+
+
+.btn-close {
+  filter: invert(1) grayscale(100%) brightness(200%);
+}
