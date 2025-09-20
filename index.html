@@ -153,7 +153,7 @@
                       <label for="inputLink" class="form-label">Link:</label>
                       <div class="input-group has-validation">  
                         <span class="input-group-text bg-transparent"><i class="bi bi-paperclip"></i></span>
-                        <input id="inputLink" type="url" class="form-control bg-transparent" placeholder="https://seulink.com/" required>
+                        <input name="link" id="inputLink" type="url" class="form-control bg-transparent" placeholder="https://seulink.com/" required>
                         <span class="valid-feedback">URl aprovada</span>
                         <span class="invalid-feedback">URL invalida</span>
                       </div>
@@ -161,46 +161,46 @@
 
                     <div class="col-md-4">
                       <label for="inputTitle" class="form-label">Titulo (máx. 25 caracteres)</label>
-                      <input id="inputTitle" type="text" class="form-control bg-transparent" placeholder="Titulo para o card!" maxlength="25" required>
+                      <input name="title" id="inputTitle" type="text" class="form-control bg-transparent" placeholder="Titulo para o card!" maxlength="25" required>
                       <span class="valid-feedback">Bom titulo!</span>
                       <span class="invalid-feedback">Você consegue pensar em um titulo melhor.</span>
                     </div>
 
                     <div class="col-md-4">
                       <label for="inputDescription" class="form-label">Descrição (máx. 150 caracteres)</label>
-                      <input id="inputDescription" type="text" class="form-control bg-transparent" placeholder="Descrição do post." maxlength="150" required>
+                      <input name="description" id="inputDescription" type="text" class="form-control bg-transparent" placeholder="Descrição do post." maxlength="150" required>
                       <span class="valid-feedback">Otima descrição!</span>
                       <span class="invalid-feedback">Algo de errado nessa descrição</span>
                     </div>
 
                     <div class="col-md-4">
-                      <label for="inputThumb" class="form-label">Thumbnail do card: </label>
+                      <label for="inputThumb" class="form-label">Thumbnail do card: (opcional)</label>
                       <div class="input-group has-validation">  
                         <span class="input-group-text bg-transparent"><i class="bi bi-paperclip"></i></span>
-                        <input id="inputThumb" type="url" class="form-control bg-transparent" placeholder="Adicione aqui o link da imagem" required>
+                        <input name="thumb" id="inputThumb" type="url" class="form-control bg-transparent" placeholder="Adicione aqui o link da imagem" >
                         <span class="valid-feedback">Otima imagem!</span>
                         <span class="invalid-feedback">Link da imagem invalido</span>
                       </div>
                     </div>
 
                     <div class="col-md-4">
-  <label for="tagsInput" class="form-label">Tags (máx. 3, 12 caracteres cada)</label>
+                      <label for="tagsInput" class="form-label">Tags (máx. 3, 12 caracteres cada)</label>
 
-  <div class="input-group mb-2">
-    <input type="text" id="tagsInput" class="form-control bg-transparent" placeholder="Digite uma tag e pressione Enter">
-    <button id="addTagBtn" type="button" class="btn btn-primary">Adicionar</button>
-  </div>
+                      <div class="input-group mb-2">
+                        <input name="tags" type="text" id="tagsInput" class="form-control bg-transparent" placeholder="Digite uma tag e pressione Enter">
+                        <button id="addTagBtn" type="button" class="btn btn-primary">Adicionar</button>
+                      </div>
 
-  <div id="tagsContainer" class="mb-2"></div>
-  <span class="valid-feedback">Ótimas tags</span>
-  <span id="tagsError" class="invalid-feedback">Máx. 3 tags, 12 caracteres cada</span>
-</div>
+                      <div id="tagsContainer" class="mb-2"></div>
+                      <span class="valid-feedback">Ótimas tags</span>
+                      <span id="tagsError" class="invalid-feedback">Máx. 3 tags, 12 caracteres cada</span>
+                    </div>
 
 
- 
+
                     <div class="col-md-4">
                       <label for="inputSection" class="form-label">Seções:</label>
-                      <select id="inputSection" class="form-select bg-transparent" multiple required>              
+                      <select name="section" id="inputSection" class="form-select bg-transparent" multiple required>              
                         <option disabled value="">Escolha entre as seções abaixo</option>
                         <option>seção 2</option>
                         <option>seção 3</option>
@@ -428,11 +428,11 @@
                         </ol>
                       </div>
                       <div class="modal-footer">
-                          <button class="btn btn-danger" data-bs-dismiss="modal">Voltar</button>
+                        <button class="btn btn-danger" data-bs-dismiss="modal">Voltar</button>
                       </div>
+                    </div>
                   </div>
                 </div>
-              </div>
 
                 <!-- Modal Quem tem acesso -->
                 <div id="whoHasAcess" class="modal fade">
@@ -479,13 +479,13 @@
 
                 <div class="footerOthers col-12 col-sm-6 col-lg-3">
                   <h4>Outros projetos</h4>
-                        <a href="https://young-rift.vercel.app/" target="_blank">Young-Rift</a>
-                        <a href="https://montando-sua-pool-6tvh.vercel.app/" target="_blank">Montando sua Pool</a>
-                        <a href="https://calcula-media-enem.vercel.app/" target="_blank">Calculadora media ENEN</a>
-                      </div>
-                    </div>
-                  </div>
+                  <a href="https://young-rift.vercel.app/" target="_blank">Young-Rift</a>
+                  <a href="https://montando-sua-pool-6tvh.vercel.app/" target="_blank">Montando sua Pool</a>
+                  <a href="https://calcula-media-enem.vercel.app/" target="_blank">Calculadora media ENEN</a>
                 </div>
+              </div>
+            </div>
+          </div>
 
 
           <div class="container">
@@ -523,9 +523,9 @@
     </div>
 
 
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
-   <script type="module" src="js/main.js"></script>
+    <script type="module" src="js/main.js"></script>
 
   </body>
 </html>
