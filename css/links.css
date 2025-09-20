@@ -71,10 +71,28 @@
   margin-top: 16px;
 }
 
+.cardImg:hover {
+   opacity: 0.4;
+}
+
+.cardImg {
+  width: 100%;
+  background-color: #111;
+}
+
 .card-title {
   color: #fff;
   font-size: 25px;
   font-weight: 700;
+}
+
+.card-title:hover {
+  color: #333;
+}
+
+.card-title {
+  text-decoration: underline;
+  text-decoration-color: #5fff85 ;
 }
 
 .card-text {
@@ -113,14 +131,14 @@
 }
 
 
-.card-img-overlay.active i {
+.star.active i {
   display: block;
   color: yellow;
 }
 
-.card-img-overlay i {
+.star i {
   color: rgba(0, 0, 0, 0.5);
-  font-size: 25px;
+  font-size: 20px;
 }
 
 #readMore {
