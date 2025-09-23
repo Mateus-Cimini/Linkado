@@ -1,5 +1,9 @@
+import { clearTags, getTags } from "./tags.js";
+
 // Inicia
 export function initCards() {
+
+
 
 // funcionalidade de favorito
    $(document).on('click', '.card', function() {
@@ -13,31 +17,30 @@ export function initCards() {
     let containerCards = $('#cardsContainer');
     containerCards.empty();
 
+
     arrayCards.forEach(card => {
       const cardHTML = `
         <div class="col-12 col-sm-6 col-lg-4">
           <div class="card">
             <a href="${card.link}" target="_blank">
-              <img class="cardImg" src="${card.thumb || 'https://placehold.co/300x200'}" alt="imagem de exemplo">
+              <img class="cardImg" src="${card.thumb || 'https://placehold.co/318x187'}" alt="imagem de exemplo">
             </a>
             <div class="card-body">
               <div class=" star d-flex justify-content-end :">
                 <i class="bi bi-star-fill"></i>
               </div>
-              <button class="btn tag-btn">tag1</button>
-              <button class="btn tag-btn">tag2</button>
-              <button class="btn tag-btn">tag3</button>
+              ${card.tags ? card.tags.map(tag => `<button class="btn tag-btn">${tag}</button>`).join('') : ''}
               <a href="${card.link}" target="_blank">
                 <h5 class="card-title">${card.title}</h5>
               </a>
               <p class="card-text">${card.description}</p>
-            </div>
+            </div> 
             <div class="card-footer d-flex justify-content-between">
               <div class="card-icons-footer">
                 <button type="button" class="btn"><i class="bi bi-trash"></i></button>
                 <button type="button" class="btn"><i class="bi bi-pencil"></i></button> 
               </div>
-              <small class="text-body-secondary text-green"><time datetime="">00/00/0000 as 00:00</time></small>
+              <small class="text-body-secondary text-green"><time datetime="">${card.date}</time></small>
             </div>
           </div>
         </div>
@@ -45,6 +48,22 @@ export function initCards() {
       containerCards.append(cardHTML);
     });
   }
+  
+  // função de pegar id do video
+  function getVideoId(link) {
+    try {
+      if (link.includes("youtu.be/")) {
+        return link.split("youtu.be/")[1].split("?")[0];  
+      } else {
+          const url = new URL(link);
+          return url.searchParams.get('v');
+        }
+    } catch {
+        return null;
+      }
+    }
+
+
 
   // (create) salva os dados do form em um objeto e adiciona ao array
  
@@ -56,6 +75,27 @@ export function initCards() {
     let formData = $(form).serializeArray();
     let card = {};
     formData.forEach(item => card[item.name] = item.value);
+
+    // adiciona a data e hora no card
+    card.date = new Date().toLocaleString("pt-BR", {
+      day: "2-digit",
+      month: "2-digit",
+      year: "numeric",
+      hour: "2-digit",
+      minute: "2-digit"
+    });
+
+  
+  // gera thumb
+  if (!card.thumb && card.link) {
+    const idVideo = getVideoId(card.link);
+    if (idVideo) card.thumb = `https://img.youtube.com/vi/${idVideo}/hqdefault.jpg`
+  }
+
+
+    // pega tags so tags
+    card.tags = getTags();
+    clearTags();
 
     arrayCards.push(card); // adiciona ao array
     renderCards();         // renderiza os cards

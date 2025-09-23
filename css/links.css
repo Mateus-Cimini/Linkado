@@ -72,12 +72,13 @@
 }
 
 .cardImg:hover {
-   opacity: 0.4;
+   opacity: 0.8;
 }
 
 .cardImg {
   width: 100%;
-  background-color: #111;
+  height: 187px;
+  object-fit: cover;
 }
 
 .card-title {

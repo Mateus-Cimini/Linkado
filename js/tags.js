@@ -37,6 +37,18 @@ export function initTags() {
   // eventos de tag
   addBtn.addEventListener("click", addTag);
   input.addEventListener("keydown", (e) => {
-    if (e.key === "Enter") addTag();
+    if (e.key === "Enter") {
+      e.preventDefault();
+      addTag();
+    }
   });
+}
+
+export function getTags() {
+  return[...tags];
+}
+
+export function clearTags() {
+  tags = [];
+  document.getElementById('tagsContainer').innerHTML = "";
 }
