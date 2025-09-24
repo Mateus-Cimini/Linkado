@@ -7,6 +7,14 @@ import { sections, updateSectionSelect } from "./section.js";
 // Inicializaçao da função principal
 export function initCards() {
 
+  // botao de excluir card
+  $(document).on('click', '.deleteCard', function() {
+    const id = Number($(this).data('id'));
+    deleteCard(id);
+  });
+
+  
+
 
 
 // funcionalidade de favorito
@@ -14,9 +22,9 @@ export function initCards() {
      $(this).find('.star').toggleClass("active")
    });
 
-
-  // array de cards
-  let arrayCards = [];
+  // recuperando os cards do localStorage e salvando no array
+  let arrayCards = JSON.parse(localStorage.getItem("cards")) || [];
+  renderCards();
 
   // função de renderizar cards na tela (READ)
   function renderCards() {
@@ -32,7 +40,7 @@ export function initCards() {
               <img class="cardImg" src="${card.thumb || 'https://placehold.co/318x187'}" alt="imagem de exemplo">
             </a>
             <div class="card-body">
-              <div class=" star d-flex justify-content-end :">
+              <div class=" star d-flex justify-content-end ">
                 <i class="bi bi-star-fill"></i>
               </div>
               ${card.tags ? card.tags.map(tag => `<button class="btn tag-btn">${tag}</button>`).join('') : ''}
@@ -43,7 +51,7 @@ export function initCards() {
             </div> 
             <div class="card-footer d-flex justify-content-between">
               <div class="card-icons-footer">
-                <button type="button" class="btn"><i class="bi bi-trash"></i></button>
+                <button type="button" class="btn deleteCard" data-id="${card.id}"><i class="bi bi-trash"></i></button>
                 <button type="button" class="btn"><i class="bi bi-pencil"></i></button> 
               </div>
               <small class="text-body-secondary text-green"><time datetime="">${card.date}</time></small>
@@ -91,6 +99,8 @@ export function initCards() {
       minute: "2-digit"
     });
 
+    card.id = Date.now() // adiciona um id unico a cada card
+
   
     // gera thumb
     if (!card.thumb && card.link) {
@@ -106,11 +116,21 @@ export function initCards() {
     card.section = $('#inputSection').val(); // pega as seções selecionadas como array
     
     arrayCards.push(card); // adiciona ao array
+    localStorage.setItem("cards", JSON.stringify(arrayCards)); // salva os cards no localStorage
     renderCards();         // renderiza os cards
 
     // limpa o form e reseta o estado visual
     form.reset();
     $('#tagsContainer').empty();
-    form.classList.remove('was-validated');
+    form.classList.remove('was-validated');  
+
   });
+
+    // função de excluir card
+  function deleteCard(id) {
+    arrayCards = arrayCards.filter(card => card.id !== id);
+    localStorage.setItem("cards", JSON.stringify(arrayCards));
+    renderCards()
+}; 
+
 }
