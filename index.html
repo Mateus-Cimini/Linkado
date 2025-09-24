@@ -119,20 +119,35 @@
                   <i class="bi bi-filter me-2"></i> Todos os links
                 </button>
               </div>
+              <div id="dynamicSections" class="row g-2">
+              </div>
               <div class="col-12 col-md-4 col-lg-2">
-                <button class="btn tab-btn w-100 d-flex justify-content-center align-items-center ">Economia</button>
-              </div>  
-              <div class="col-12 col-md-4 col-lg-2">
-                <button class="btn tab-btn w-100 d-flex justify-content-center align-items-center ">Programação</button>
-              </div>  
-              <div class="col-12 col-md-4 col-lg-2">
-                <button class="btn tab-btn w-100 d-flex justify-content-center align-items-center ">LOL</button>
-              </div>  
-              <div class="col-12 col-md-4 col-lg-2">
-                <button class="btn tab-btn w-100 d-flex justify-content-center align-items-center ">Política</button>
-              </div>  
+                <button type="button" id="addSection" class="btn tab-btn w-100 d-flex justify-content-center" data-bs-toggle="modal" data-bs-target="#addSectionModal">+ Nova Seção</button>
+              </div>
+             
             </div>
           </div>
+         
+        <div id="addSectionModal" class="modal fade">
+            <div class="modal-dialog modal-xl">
+              <div class="modal-content">
+                <div class="modal-body">
+                  <form class="" id="formSection">
+                    <div class="col-md-4">
+                      <label class="form-label" for="inputAddSection">Sua nova seção (playlist)</label>
+                      <input class="form-control bg-transparent" id="inputAddSection" name="addSection" type="text" placeholder="nome da seção">
+                    </div>
+                  </form>
+                </div>
+                <div class="modal-footer">
+                   <button id="btnAddSection" form="formSection" type="button" class="btn btn-success">Adicionar</button>
+                  <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+
+                </div>
+              </div>
+            </div>
+        </div>
+
         </div>
 
 

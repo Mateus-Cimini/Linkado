@@ -1,6 +1,10 @@
+// importa funções do arquivo tags.js
+// clearTags -> limpa as tags criadas
+// getTags -> retorna as tags atuais
 import { clearTags, getTags } from "./tags.js";
+import { sections, updateSectionSelect } from "./section.js";
 
-// Inicia
+// Inicializaçao da função principal
 export function initCards() {
 
 
@@ -10,14 +14,16 @@ export function initCards() {
      $(this).find('.star').toggleClass("active")
    });
 
+
+  // array de cards
   let arrayCards = [];
 
-  // (read) cria os cards com base no array
+  // função de renderizar cards na tela (READ)
   function renderCards() {
     let containerCards = $('#cardsContainer');
-    containerCards.empty();
+     containerCards.empty(); // limpa os cards atuais antes de renderizar de novo
 
-
+     // percorre todos os objetos dentro do arrayCards e cria o HTML de cada card
     arrayCards.forEach(card => {
       const cardHTML = `
         <div class="col-12 col-sm-6 col-lg-4">
@@ -65,7 +71,7 @@ export function initCards() {
 
 
 
-  // (create) salva os dados do form em um objeto e adiciona ao array
+  // salva os dados do form em um objeto e adiciona ao array (CREATE)
  
   const form = document.getElementById('formLink');
   form.addEventListener('formValidated', (e) => {
@@ -86,20 +92,23 @@ export function initCards() {
     });
 
   
-  // gera thumb
-  if (!card.thumb && card.link) {
-    const idVideo = getVideoId(card.link);
-    if (idVideo) card.thumb = `https://img.youtube.com/vi/${idVideo}/hqdefault.jpg`
-  }
+    // gera thumb
+    if (!card.thumb && card.link) {
+      const idVideo = getVideoId(card.link);
+      if (idVideo) card.thumb = `https://img.youtube.com/vi/${idVideo}/hqdefault.jpg`
+    }
 
 
-    // pega tags so tags
+     // pega as tags criadas pelo usuário
     card.tags = getTags();
-    clearTags();
+    clearTags(); // limpa as tags para o próximo card
 
+    card.section = $('#inputSection').val(); // pega as seções selecionadas como array
+    
     arrayCards.push(card); // adiciona ao array
     renderCards();         // renderiza os cards
 
+    // limpa o form e reseta o estado visual
     form.reset();
     $('#tagsContainer').empty();
     form.classList.remove('was-validated');
