@@ -1,43 +1,45 @@
+import { renderCards } from "./cards.js";
+
 export let sections = JSON.parse(localStorage.getItem("sections")) || [];
 
 function saveSections() {
   localStorage.setItem("sections", JSON.stringify(sections));
 }
 
-
-// função de gerar na tela o botao de seção
+// Função de gerar na tela o botão de seção
 export function renderSectionButtons() {
   const container = $('#dynamicSections');
   container.empty();
 
+  // botões dinâmicos das seções
   sections.forEach(section => {
     const btnHTML = `
       <div class="col-12 col-md-4 col-lg-3">
-        <div class="btn-group w-100 role="group">
-         <button class="btn tab-btn btn-outline-primary flex-grow d-flex justify-content-center">${section}</button>
-         <button class="deleteSection btn btn-outline-danger" data-section="${section}">
-          <i class="bi bi-trash"></i>
-         </button>
-       </div> 
+        <div class="btn-group w-100" role="group">
+          <button class="btn tab-btn btn-outline-primary flex-grow d-flex justify-content-center" data-section="${section}">${section}</button>
+          <button class="deleteSection btn btn-outline-danger" data-section="${section}">
+            <i class="bi bi-trash"></i>
+          </button>
+        </div> 
       </div>
     `;
     container.append(btnHTML)
-});
+  });
 }
 
 // Adiciona uma nova seção ao array
 $('#btnAddSection').on('click', function() {
   let newSection = $('#inputAddSection').val().trim();
-  if(newSection && !sections.includes(newSection)) {
+  if (newSection && !sections.includes(newSection)) {
     sections.push(newSection);
-    saveSections(); // salvando no localStorage
+    saveSections();
     $("#inputAddSection").val('');
     updateSectionSelect();
-    renderSectionButtons()
+    renderSectionButtons();
   }
 });
 
-// função do botao de apagar section
+// Função do botão de apagar seção
 $(document).on('click', '.deleteSection', function() {
   const sectionName = $(this).data('section');
   sections = sections.filter(sec => sec !== sectionName);
@@ -61,14 +63,16 @@ $('#addLink').on('show.bs.modal', function () {
   updateSectionSelect();
 });
 
-// faz a seçao selecionada criar borda e no futuro mudar conteudo
-  $(document).on('click', '.tab-btn', function() {
-    $('.tab-btn').removeClass('active'); // remove a classe active de todos botoes
-    $(this).addClass('active'); // adiciona clasee active no botao clicado
-})
+// Faz a seção selecionada criar borda e filtrar cards
+$(document).on('click', '.tab-btn', function() {
+  $('.tab-btn').removeClass('active');
+  $(this).addClass('active');
 
-// inicializa a interface com as seções salvas no localStorage
+  const selectedSection = $(this).data('section');
+  renderCards(selectedSection);
+});
+
+// Inicializa interface
 renderSectionButtons();
 updateSectionSelect();
-
 
