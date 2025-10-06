@@ -23,14 +23,21 @@ export function initTags() {
   function renderTags() {
     container.innerHTML = "";
     tags.forEach((tag, index) => {
-      const span = document.createElement("span");
-      span.className = "badge bg-primary me-1";
-      span.textContent = tag;
-      span.addEventListener("click", () => {
-        tags.splice(index, 1);
-        renderTags();
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "badge bg-primary me-1";
+      btn.textContent = tag;
+      btn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        e.preventDefault();
+ 
+        const editMode = document.getElementById('addLink').dataset.editMode === 'true';
+        if (!editMode) {
+          tags.splice(index, 1);
+          renderTags();
+        }
       });
-      container.appendChild(span);
+      container.appendChild(btn);
     });
   }
 

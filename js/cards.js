@@ -1,17 +1,14 @@
 import { clearTags, getTags, initTags } from "./tags.js";
 import { renderSectionButtons, sections, updateSectionSelect } from "./section.js";
 
-// Array de cards no nível do módulo
+// Array de cards
 export let arrayCards = JSON.parse(localStorage.getItem("cards")) || [];
-
-
 
 // FUNÇÃO DE RENDERIZAÇÃO
 export function renderCards(filterSection = "All") {
   const containerCards = $('#cardsContainer');
   containerCards.empty();
-  
-  // if para identificar o filter
+
   const cardsToRender = filterSection === 'All'
     ? arrayCards
     : arrayCards.filter(card => card.section === filterSection);
@@ -20,8 +17,6 @@ export function renderCards(filterSection = "All") {
 }
 
 // FUNÇÕES AUXILIARES
-
-// função para criaçao do card e adicionalo no array
 function createCardHTML(card) {
   return `
     <div class="col-12 col-sm-6 col-lg-4">
@@ -30,29 +25,27 @@ function createCardHTML(card) {
           <img class="cardImg" src="${card.thumb || 'https://placehold.co/318x187'}" alt="imagem de exemplo">
         </a>
         <div class="card-body">
-          <div class=" star d-flex justify-content-end ">
-             <i class="bi bi-star-fill"></i>
+          <div class="star d-flex justify-content-end">
+            <i class="bi bi-star-fill"></i>
           </div>
-          ${card.tags ? card.tags.map(tag => `<button class="btn tag-btn">${tag}</button>`).join('') : ''}
+          ${Array.isArray(card.tags) ? card.tags.map(tag => `<button class="btn tag-btn">${tag}</button>`).join('') : ''}
           <a href="${card.link}" target="_blank">
             <h5 class="card-title">${card.title}</h5>
           </a>
           <p class="card-text">${card.description}</p>
-        </div> 
+        </div>
         <div class="card-footer d-flex justify-content-between">
           <div class="card-icons-footer">
             <button type="button" class="btn deleteCard" data-id="${card.id}"><i class="bi bi-trash"></i></button>
-            <button type="button" class="btn"><i class="bi bi-pencil"></i></button> 
+            <button type="button" class="btn editCard" data-id="${card.id}"><i class="bi bi-pencil"></i></button>
           </div>
           <small class="text-body-secondary text-green"><time datetime="">${card.date}</time></small>
         </div>
       </div>
     </div>
-    `;
+  `;
 }
 
-
-// Função auxiliar para pegar ID de vídeo do YouTube
 function getVideoId(link) {
   try {
     if (link.includes("youtu.be/")) {
@@ -66,87 +59,115 @@ function getVideoId(link) {
   }
 }
 
-
 // FUNÇÕES DE MANIPULAÇÃO
-
-// função de salvar card
 function saveCard(card) {
-  arrayCards.push(card); // adiciona ao array
-  localStorage.setItem("cards", JSON.stringify(arrayCards)); // salva no localStorage
+  arrayCards.push(card);
+  localStorage.setItem("cards", JSON.stringify(arrayCards));
 }
 
-// função de deletar card
 function deleteCard(id) {
   arrayCards = arrayCards.filter(card => card.id !== id);
   localStorage.setItem("cards", JSON.stringify(arrayCards));
   renderCards();
 }
 
+function editCard(id) {
+  const card = arrayCards.find(c => c.id === id);
+  if (!card) return;
+
+  const modalEl = document.getElementById('addLink');
+  let modal = bootstrap.Modal.getInstance(modalEl);
+  if (!modal) modal = new bootstrap.Modal(modalEl);
+
+  updateSectionSelect();
+  $('#inputSection').val(card.section);
+  $('#inputTitle').val(card.title);
+  $('#inputDescription').val(card.description);
+  $('#inputLink').val(card.link);
+  $('#inputThumb').val(card.thumb || '');
+
+  const container = document.getElementById('tagsContainer');
+  container.innerHTML = '';
+  const tagsArray = Array.isArray(card.tags) ? card.tags : [];
+  tagsArray.forEach(tag => {
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'btn tag-btn';
+    btn.textContent = tag;
+    container.appendChild(btn);
+  });
+
+  modalEl.dataset.editMode = true;
+  modalEl.dataset.editId = id;
+
+  modal.show();
+
+  modalEl.addEventListener('hidden.bs.modal', () => {
+    modalEl.removeAttribute('data-edit-mode');
+    modalEl.removeAttribute('data-edit-id');
+    $('#formLink').trigger('reset');
+    $('#tagsContainer').empty();
+  }, { once: true });
+}
 
 // INICIALIZAÇÃO DE EVENTOS
-
-// Função para inicializar eventos do form, botões e favoritos
 export function initCards() {
-
-  // Excluir card (refistra o click)
   $(document).on('click', '.deleteCard', function() {
     deleteCard(Number($(this).data('id')));
   });
 
-  // Favorito
+  $(document).on('click', '.editCard', function() {
+    editCard(Number($(this).data('id')));
+  });
+
   $(document).on('click', '.star', function(e) {
     e.stopPropagation();
     $(this).toggleClass("active");
   });
 
-  // Salvar card do form
   const form = document.getElementById('formLink');
   form.addEventListener('formValidated', e => {
     if (!e.detail.isValid) return;
 
-    let formData = $(form).serializeArray();
+    const formData = $(form).serializeArray();
     let card = {};
-
     formData.forEach(item => card[item.name] = item.value);
 
-
-    // data e hora
     card.date = new Date().toLocaleString("pt-BR", {
-      day: "2-digit",
-      month: "2-digit",
-      year: "numeric",
-      hour: "2-digit",
-      minute: "2-digit"
+      day: "2-digit", month: "2-digit", year: "numeric",
+      hour: "2-digit", minute: "2-digit"
     });
-    card.id = Date.now(); // adiciona um id unico a cada card
 
+    card.section = $('#inputSection').val();
+    card.tags = getTags() || []; // garante que tags seja um array
 
-    // gera thumb
     if (!card.thumb && card.link) {
       const idVideo = getVideoId(card.link);
       if (idVideo) card.thumb = `https://img.youtube.com/vi/${idVideo}/hqdefault.jpg`;
     }
+     
+    const modalEl = document.getElementById('addLink');
+    const editId = modalEl.dataset.editId;
+    if (editId) {
+      const index = arrayCards.findIndex(c => c.id == editId);
+      if (index !== -1) arrayCards[index] = { ...arrayCards[index], ...card };
+      form.removeAttribute('data-edit-id');
+    } else {
+      card.id = Date.now();
+      saveCard(card);
+      clearTags();
+    }
 
-
-    // pega as tags criadas pelo usuario
-    card.tags = getTags();
-    clearTags(); // limpa as tags para o proximo card
-    card.section = $('#inputSection').val(); // pega as seçoes selecionadas como array
-    
-    saveCard(card); // chama funçao de salvar card
-    renderCards(); // chama funçao de renderizar cards
-
-
-    // limpa o form e reseta o estado visual
     form.reset();
     $('#tagsContainer').empty();
-    form.classList.remove('was-validated');
+    renderCards();
   });
 }
 
-// EXECUÇÃO INICIAL
+// Inicialização
 $(document).ready(() => {
   renderSectionButtons();
-  renderCards('All')
-  initTags()
-})
+  renderCards('All');
+  initTags();
+});
+
