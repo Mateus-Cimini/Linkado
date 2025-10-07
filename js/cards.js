@@ -116,6 +116,17 @@ function editCard(id) {
 // gera backup
 function exportBackup() {
   $(document).on('click', '#btnExport', function() {
+    const data = JSON.stringify(localStorage, null, 2); // formata com indentação
+    const blob = new Blob([data], { type: 'application/json' }); // cria um blob(arquivo temporario na memmoria do navegador)
+    const url = URL.createObjectURL(blob); // cria um link temporario
+
+    const a = document.createElement('a'); // cria um <a> dinamico js
+    a.href = url; // define o href para o arquivo
+    a.download = 'backup_localStorage.json'; // define o nome do arquivo
+    a.click(); // clica automaticamente gerando o download
+
+    URL.revokeObjectURL(url) // remove da memoria o link temporario
+
     location.reload();
     console.log('salvando backup')
   });
@@ -123,8 +134,37 @@ function exportBackup() {
 
 // importa o backup
 function importBackup() {
-  $(document).on('click', '#btnImport', function() {
-    location.reload();
+  $(document).off('click', '#btnImport').on('click', '#btnImport', function() { 
+
+    const input = document.createElement('input');
+    input.type = 'file';
+    input.accept = '.json';
+
+    input.onchange = (event) => {
+      const file = event.target.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        try {
+          const data = JSON.parse(e.target.result);
+
+          localStorage.clear();
+          for (const key in data) {
+            localStorage.setItem(key, data[key]);
+          }
+
+          alert('Backup importado com sucesso!')
+          location.reload();
+        } catch (err) {
+           alert("Erro ao importar o arquivo: " + err.message)
+        }
+      };
+
+      reader.readAsText(file);
+    };
+
+    input.click(); // abre o seletor de arquivo
     console.log('importando backup');
   });
 }
