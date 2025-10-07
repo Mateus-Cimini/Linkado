@@ -97,356 +97,356 @@
             <i class="bi bi-download"></i> Salvar backup
           </button>
           <button id="btnImport" class="btn btn-warning">
-            <i class="bi bi-upload"></i> Adicionar cards
-          </button>
-          <button id="btnClear" class="btn btn-danger">
-            <i class="bi bi-trash"></i> Apagar todos
-          </button>
-        </div>
-
-        <div id="linkText">
-          <h2>Encontre rápido, acesse fácil</h2>
-          <p><strong>Linkado</strong> — seu repositório pessoal de links, seguro e sempre salvo no localStorage do seu navegador.</p>
-        </div>
-
-
-        <div id="linkSections"> 
-
-          <div class="container mt-4">
-            <div class="row g-2 justify-content-center">
-              <div class="col-12 col-md-4 col-lg-2">
-                <button class="btn tab-btn w-100 d-flex justify-content-center align-items-center active" data-section="All" > 
-                  <i class="bi bi-filter me-2"></i> Todos os links
-                </button>
-              </div>
-              <div id="dynamicSections" class="row g-2">
-              </div>
-              <div class="col-12 col-md-4 col-lg-2">
-                <button type="button" id="addSection" class="btn tab-btn w-100 d-flex justify-content-center" data-bs-toggle="modal" data-bs-target="#addSectionModal">+ Nova Seção(PlayLits)</button>
-              </div>
-             
-            </div>
-          </div>
-         
-        <div id="addSectionModal" class="modal fade">
-            <div class="modal-dialog modal-xl">
-              <div class="modal-content">
-                <div class="modal-body">
-                  <form class="" id="formSection">
-                    <div class="col-md-4">
-                      <label class="form-label" for="inputAddSection">Sua nova seção (playlist)</label>
-                      <input class="form-control bg-transparent" id="inputAddSection" name="addSection" type="text" placeholder="nome da seção">
-                    </div>
-                  </form>
-                </div>
-                <div class="modal-footer">
-                   <button id="btnAddSection" form="formSection" data-bs-dismiss="modal" type="button" class="btn btn-success">Adicionar</button>
-                  <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
-
-                </div>
-              </div>
-            </div>
-        </div>
-
-        </div>
-
-
-
-        <div id="linkCards">
-          <div class="start ms-lg-3 btnHome">
-            <button class="btn" type="button" data-bs-toggle="modal" data-bs-target="#addLink">Adicionar links</button>
+              <i class="bi bi-upload"></i> Adicionar cards
+            </button>
+            <button id="btnClear" class="btn btn-danger">
+              <i class="bi bi-trash"></i> Apagar todos
+            </button>
           </div>
 
-          <div id="addLink" class="modal fade ">
-            <div class="modal-dialog modal-xl ">
-              <div class="modal-content">
-                <div class="modal-body">
-
-                  <form id="formLink" class="row g-3 needs-validation" novalidate>
-
-                    <div class="col-md-4">
-                      <label for="inputLink" class="form-label">Link:</label>
-                      <div class="input-group has-validation">  
-                        <span class="input-group-text bg-transparent"><i class="bi bi-paperclip"></i></span>
-                        <input name="link" id="inputLink" type="url" class="form-control bg-transparent" placeholder="https://seulink.com/" required>
-                        <span class="valid-feedback">URl aprovada</span>
-                        <span class="invalid-feedback">URL invalida</span>
-                      </div>
-                    </div>
-
-                    <div class="col-md-4">
-                      <label for="inputTitle" class="form-label">Titulo (máx. 25 caracteres)</label>
-                      <input name="title" id="inputTitle" type="text" class="form-control bg-transparent" placeholder="Titulo para o card!" maxlength="25" required>
-                      <span class="valid-feedback">Bom titulo!</span>
-                      <span class="invalid-feedback">Você consegue pensar em um titulo melhor.</span>
-                    </div>
-
-                    <div class="col-md-4">
-                      <label for="inputDescription" class="form-label">Descrição (máx. 150 caracteres)</label>
-                      <input name="description" id="inputDescription" type="text" class="form-control bg-transparent" placeholder="Descrição do post." maxlength="150" required>
-                      <span class="valid-feedback">Otima descrição!</span>
-                      <span class="invalid-feedback">Algo de errado nessa descrição</span>
-                    </div>
-
-                    <div class="col-md-4">
-                      <label for="inputThumb" class="form-label">Thumbnail do card: (opcional)</label>
-                      <div class="input-group has-validation">  
-                        <span class="input-group-text bg-transparent"><i class="bi bi-paperclip"></i></span>
-                        <input name="thumb" id="inputThumb" type="url" class="form-control bg-transparent" placeholder="Adicione aqui o link da imagem" >
-                        <span class="valid-feedback">Otima imagem!</span>
-                        <span class="invalid-feedback">Link da imagem invalido</span>
-                      </div>
-                    </div>
-
-                    <div class="col-md-4">
-                      <label for="tagsInput" class="form-label">Tags (máx. 3, 12 caracteres cada)</label>
-
-                      <div class="input-group mb-2">
-                        <input name="tags" type="text" id="tagsInput" class="form-control bg-transparent" placeholder="Digite uma tag e pressione Enter">
-                        <button id="addTagBtn" type="button" class="btn btn-primary">Adicionar</button>
-                      </div>
-
-                      <div id="tagsContainer" class="mb-2"></div>
-                      <span class="valid-feedback">Ótimas tags</span>
-                      <span id="tagsError" class="invalid-feedback">Máx. 3 tags, 12 caracteres cada</span>
-                    </div>
-
-
-
-                    <div class="col-md-4">
-                      <label for="inputSection" class="form-label">Seções:</label>
-                      <select name="section" id="inputSection" class="form-select bg-transparent" required>              
-                        <option disabled value="">Escolha entre as seções abaixo</option>
-                        <option>seção 2</option>
-                        <option>seção 3</option>
-                      </select>
-                      <span class="valid-feedback">Boa escolha de seção!</span>
-                      <span class="invalid-feedback">Tem que adicionar pelo menos 1 seção, caso nao esteja aparecendo seções <a href="#" data-bs-toggle="modal" data-bs-target="#addSectionModal">você deve adicionar uma seção</a>primeiro</span>
-                    </div>
-
-                  </form>
-
-                </div>
-                <div class="modal-footer">
-                  <button id='btnSubmit' data-bs-dismiss="modal" form="formLink" type="submit" class="btn btn-success">Adicionar</button>
-                  <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
-                </div>
-              </div>
-            </div>
+          <div id="linkText">
+            <h2>Encontre rápido, acesse fácil</h2>
+            <p><strong>Linkado</strong> — seu repositório pessoal de links, seguro e sempre salvo no localStorage do seu navegador.</p>
           </div>
 
 
-          <div class="container px-3">
-            <div id="cardsContainer" class="row g-5">
-              <div class="col-12 col-sm-6 col-lg-4">
-                <div class="card">
-                  <a href="#" target="_blank">
-                    <img class="cardImg" src="https://placehold.co/318x187" alt="imagem de exemplo">
-                  </a>
-                  <div class="card-body">
-                    <div class=" star d-flex justify-content-end">
-                      <i class="bi bi-star-fill"></i>
-                    </div>
-                    <div id="tagsContainer">
-                      <button class="btn tag-btn">tag1</button>
-                      <button class="btn tag-btn">tag2</button>
-                      <button class="btn tag-btn">tag3</button>
-                    </div>
+          <div id="linkSections"> 
+
+            <div class="container mt-4">
+              <div class="row g-2 justify-content-center">
+                <div class="col-12 col-md-4 col-lg-2">
+                  <button class="btn tab-btn w-100 d-flex justify-content-center align-items-center active" data-section="All" > 
+                    <i class="bi bi-filter me-2"></i> Todos os links
+                  </button>
+                </div>
+                <div id="dynamicSections" class="row g-2">
+                </div>
+                <div class="col-12 col-md-4 col-lg-2">
+                  <button type="button" id="addSection" class="btn tab-btn w-100 d-flex justify-content-center" data-bs-toggle="modal" data-bs-target="#addSectionModal">+ Nova Seção(PlayLits)</button>
+                </div>
+               
+              </div>
+            </div>
+           
+          <div id="addSectionModal" class="modal fade">
+              <div class="modal-dialog modal-xl">
+                <div class="modal-content">
+                  <div class="modal-body">
+                    <form class="" id="formSection">
+                      <div class="col-md-4">
+                        <label class="form-label" for="inputAddSection">Sua nova seção (playlist)</label>
+                        <input class="form-control bg-transparent" id="inputAddSection" name="addSection" type="text" placeholder="nome da seção">
+                      </div>
+                    </form>
+                  </div>
+                  <div class="modal-footer">
+                     <button id="btnAddSection" form="formSection" data-bs-dismiss="modal" type="button" class="btn btn-success">Adicionar</button>
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+
+                  </div>
+                </div>
+              </div>
+          </div>
+
+          </div>
+
+
+
+          <div id="linkCards">
+            <div class="start ms-lg-3 btnHome">
+              <button class="btn" type="button" data-bs-toggle="modal" data-bs-target="#addLink">Adicionar links</button>
+            </div>
+
+            <div id="addLink" class="modal fade ">
+              <div class="modal-dialog modal-xl ">
+                <div class="modal-content">
+                  <div class="modal-body">
+
+                    <form id="formLink" class="row g-3 needs-validation" novalidate>
+
+                      <div class="col-md-4">
+                        <label for="inputLink" class="form-label">Link:</label>
+                        <div class="input-group has-validation">  
+                          <span class="input-group-text bg-transparent"><i class="bi bi-paperclip"></i></span>
+                          <input name="link" id="inputLink" type="url" class="form-control bg-transparent" placeholder="https://seulink.com/" required>
+                          <span class="valid-feedback">URl aprovada</span>
+                          <span class="invalid-feedback">URL invalida</span>
+                        </div>
+                      </div>
+
+                      <div class="col-md-4">
+                        <label for="inputTitle" class="form-label">Titulo (máx. 25 caracteres)</label>
+                        <input name="title" id="inputTitle" type="text" class="form-control bg-transparent" placeholder="Titulo para o card!" maxlength="25" required>
+                        <span class="valid-feedback">Bom titulo!</span>
+                        <span class="invalid-feedback">Você consegue pensar em um titulo melhor.</span>
+                      </div>
+
+                      <div class="col-md-4">
+                        <label for="inputDescription" class="form-label">Descrição (máx. 150 caracteres)</label>
+                        <input name="description" id="inputDescription" type="text" class="form-control bg-transparent" placeholder="Descrição do post." maxlength="150" required>
+                        <span class="valid-feedback">Otima descrição!</span>
+                        <span class="invalid-feedback">Algo de errado nessa descrição</span>
+                      </div>
+
+                      <div class="col-md-4">
+                        <label for="inputThumb" class="form-label">Thumbnail do card: (opcional)</label>
+                        <div class="input-group has-validation">  
+                          <span class="input-group-text bg-transparent"><i class="bi bi-paperclip"></i></span>
+                          <input name="thumb" id="inputThumb" type="url" class="form-control bg-transparent" placeholder="Adicione aqui o link da imagem" >
+                          <span class="valid-feedback">Otima imagem!</span>
+                          <span class="invalid-feedback">Link da imagem invalido</span>
+                        </div>
+                      </div>
+
+                      <div class="col-md-4">
+                        <label for="tagsInput" class="form-label">Tags (máx. 3, 12 caracteres cada)</label>
+
+                        <div class="input-group mb-2">
+                          <input name="tags" type="text" id="tagsInput" class="form-control bg-transparent" placeholder="Digite uma tag e pressione Enter">
+                          <button id="addTagBtn" type="button" class="btn btn-primary">Adicionar</button>
+                        </div>
+
+                        <div id="tagsContainer" class="mb-2"></div>
+                        <span class="valid-feedback">Ótimas tags</span>
+                        <span id="tagsError" class="invalid-feedback">Máx. 3 tags, 12 caracteres cada</span>
+                      </div>
+
+
+
+                      <div class="col-md-4">
+                        <label for="inputSection" class="form-label">Seções:</label>
+                        <select name="section" id="inputSection" class="form-select bg-transparent" required>              
+                          <option disabled value="">Escolha entre as seções abaixo</option>
+                          <option>seção 2</option>
+                          <option>seção 3</option>
+                        </select>
+                        <span class="valid-feedback">Boa escolha de seção!</span>
+                        <span class="invalid-feedback">Tem que adicionar pelo menos 1 seção, caso nao esteja aparecendo seções <a href="#" data-bs-toggle="modal" data-bs-target="#addSectionModal">você deve adicionar uma seção</a>primeiro</span>
+                      </div>
+
+                    </form>
+
+                  </div>
+                  <div class="modal-footer">
+                    <button id='btnSubmit' data-bs-dismiss="modal" form="formLink" type="submit" class="btn btn-success">Adicionar</button>
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="container px-3">
+              <div id="cardsContainer" class="row g-5">
+                <div class="col-12 col-sm-6 col-lg-4">
+                  <div class="card">
                     <a href="#" target="_blank">
-                      <h5 class="card-title">Exemplo de card</h5>
+                      <img class="cardImg" src="https://placehold.co/318x187" alt="imagem de exemplo">
                     </a>
-                    <p class="card-text">Aqui vai ficar a descrição do card </p>
-                  </div>
-                  <div class="card-footer d-flex justify-content-between">
-                    <div class="card-icons-footer">
-                      <button type="button" class="btn"><i class="bi bi-trash"></i></button>
-                      <button type="button" class="btn"><i class="bi bi-pencil"></i></button> 
+                    <div class="card-body">
+                      <div class=" star d-flex justify-content-end">
+                        <i class="bi bi-star-fill"></i>
+                      </div>
+                      <div id="tagsContainer">
+                        <button class="btn tag-btn">tag1</button>
+                        <button class="btn tag-btn">tag2</button>
+                        <button class="btn tag-btn">tag3</button>
+                      </div>
+                      <a href="#" target="_blank">
+                        <h5 class="card-title">Exemplo de card</h5>
+                      </a>
+                      <p class="card-text">Aqui vai ficar a descrição do card </p>
                     </div>
-                    <small class="text-body-secondary text-green"><time datetime="">00/00/0000 as 00:00</time></small>
-                  </div>
-                </div>
-              </div>
-
-
-
-             
-
-
-             
-            </div>
-          </div>
-        </div>
-
-        <div id="readMore" class="d-flex align-items-center">
-          <div class="flex-grow-1 border-top"></div>
-          <button class="btn btn-link px-2"> Ler mais
-            <span class="ms-1">→</span>
-          </button>
-          <div class="flex-grow-1 border-top"></div>
-
-        </div>
-
-      </section>
-
-
-
-
-      <section id="final">
-        <footer>
-
-          <div class="container">
-            <div class="">
-              <div class="footerMain row">
-                <div class="footerBrand col-12 col-sm-6 col-lg-5">
-                  <div class="brand">
-                    <a href="#" class="nav-link">
-                      <img src="img/logo-lobo.png" alt="logo" height="100px"> 
-                      <h1>Linkado</h1>
-                    </a>
-                  </div>
-
-                  <p><strong>Linkado</strong> - Organize e visualize seus links em cards interativos.
-                    Escolha thumbnails automáticas ou personalizadas e agrupe por seções.
-                    Salve, faça backup e recupere seus links facilmente.
-                  </p>
-
-                  <div id="socialLinks" class="d-flex justify-content-start gap-3">
-                    <a href="https://github.com/Mateus-Cimini" target="_blank" class="social-link">
-                      <i class="bi bi-github" style="font-size: 20px;"></i>
-                    </a>
-                    <a href="https://instagram.com/@mateus.cimini" target="_blank" class="social-link">
-                      <i class="bi bi-instagram" style="font-size: 20px;"></i>
-                    </a>
-                    <a href="mailto:mateusmateus122333@gmail.com" target="_blank" class="social-link">
-                      <i class="bi bi-envelope-fill" style="font-size: 20px;"></i>
-                    </a>
-                  </div>
-                </div>
-
-
-
-                <div class="footerSupport col-12 col-sm-6 col-lg-4 ">
-                  <h4>Suporte</h4>
-                  <button class="btn" data-bs-toggle="modal" data-bs-target="#howItWorks">Como funciona?</button>
-                  <button class="btn" data-bs-toggle="modal" data-bs-target="#whoHasAcess">Quem tem acesso?</button>
-                  <button class="btn" data-bs-toggle="modal" data-bs-target="#savedData">Por quanto tempo os dados ficam guardados?</button>
-                  <a href="mailto:mateusmateus122333@gmail.com" target="_blank" class="btn">Reportar bug</a>
-                </div>
-
-                <!-- Modais do suporte -->
-                <!-- Modal Como funciona -->
-                <div id="howItWorks" class="modal fade">
-                  <div class="modal-dialog">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <h5 class="modal-title">Como funciona?</h5>
-                        <button class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <div class="card-footer d-flex justify-content-between">
+                      <div class="card-icons-footer">
+                        <button type="button" class="btn"><i class="bi bi-trash"></i></button>
+                        <button type="button" class="btn"><i class="bi bi-pencil"></i></button> 
                       </div>
-                      <div class="modal-body">
-                        <ol>
-                          <li><strong>Adicionar:</strong> link preencha o título, link do vídeo e, opcionalmente, um link de imagem personalizada. Escolha a seção onde o card será colocado e clique em "Adicionar".</li>
-                          <li><strong>Editar ou excluir:</strong> use os botões no card para alterar informações ou remover vídeos.</li>
-                          <li><strong>Seções:</strong> organize seus vídeos em diferentes seções para facilitar a visualização.</li>
-                          <li><strong>Backup:</strong> você pode exportar todos os vídeos como JSON para salvar, e importar depois para restaurar seus cards.</li>
-                        </ol>
-                      </div>
-                      <div class="modal-footer">
-                        <button class="btn btn-danger" data-bs-dismiss="modal">Voltar</button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- Modal Quem tem acesso -->
-                <div id="whoHasAcess" class="modal fade">
-                  <div class="modal-dialog">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <h5 class="modal-title">Quem tem acesso?</h5>
-                        <button class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                      </div>
-                      <div class="modal-body">
-                        <p>Todos os links adicionados ficam <strong>somente no seu navegador</strong> e não são compartilhados com ninguém. Nenhum dado é enviado para servidores externos, garantindo que seus vídeos e informações permaneçam privados.</p>
-                      </div>
-                      <div class="modal-footer">
-                        <button class="btn btn-danger" data-bs-dismiss="modal">Voltar</button>
-                      </div>
+                      <small class="text-body-secondary text-green"><time datetime="">00/00/0000 as 00:00</time></small>
                     </div>
                   </div>
                 </div>
 
 
 
-                <!-- Por quanto tempo os dados ficam salvos -->
-                <div id="savedData" class="modal fade">
-                  <div class="modal-dialog">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <h5 class="modal-title">Por quanto tempo os dados ficam salvos?</h5>
-                        <button class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                      </div>
-                      <div class="modal-body">
-                        <p>Os dados ficam salvos no seu navegador <strong>indefinidamente</strong>, enquanto você não limpar o <code>localStorage</code>.</p>
-                        <p>Mesmo fechando ou reiniciando o navegador, seus cards permanecem disponíveis. Mas nunca apague o cache antes de fazer backup</p>
-                      </div>
-                      <div class="modal-footer">
-                        <button class="btn btn-danger" data-bs-dismiss="modal">Voltar</button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+               
 
 
-
-
-
-                <div class="footerOthers col-12 col-sm-6 col-lg-3">
-                  <h4>Outros projetos</h4>
-                  <a href="https://young-rift.vercel.app/" target="_blank">Young-Rift</a>
-                  <a href="https://montando-sua-pool-6tvh.vercel.app/" target="_blank">Montando sua Pool</a>
-                  <a href="https://calcula-media-enem.vercel.app/" target="_blank">Calculadora media ENEN</a>
-                </div>
+               
               </div>
             </div>
           </div>
 
-
-          <div class="container">
-            <div class="footerEmail row">
-              <div class="text col-12 col-sm-6 col-lg-6">
-                <h4>Este é um projeto de portfólio</h4>
-                <p>Para demonstrar minhas habilidades em front-end.
-                  Quer entrar em contato? Deixe seu e-mail e eu retornarei assim que possível.</p>
-              </div>
-              <div class="form col-12 col-lg-6 col-sm-6">
-                <form class="contentFormEmail d-flex gap-2">
-                  <div id="formEmail">
-                    <label class="visually-hidden" for="inputEmail">Seu melhor e-mail</label>
-                    <input type="email" id="inputEmail" class="form-control" placeholder="Seu melhor e-mail">
-                  </div>
-
-                  <div class="formBtn">  
-                    <button type="submit" class="btn">Enviar</button>
-                  </div>
-
-                </form>
-              </div>
-            </div>
-
+          <div id="readMore" class="d-flex align-items-center">
+            <div class="flex-grow-1 border-top"></div>
+            <button class="btn btn-link px-2"> Ler mais
+              <span class="ms-1">→</span>
+            </button>
+            <div class="flex-grow-1 border-top"></div>
 
           </div>
-          <div class="footerEnd">
+
+        </section>
+
+
+
+
+        <section id="final">
+          <footer>
+
             <div class="container">
-              <p>© 2025 Linkado. Todos os direitos reservados.</p>
+              <div class="">
+                <div class="footerMain row">
+                  <div class="footerBrand col-12 col-sm-6 col-lg-5">
+                    <div class="brand">
+                      <a href="#" class="nav-link">
+                        <img src="img/logo-lobo.png" alt="logo" height="100px"> 
+                        <h1>Linkado</h1>
+                      </a>
+                    </div>
+
+                    <p><strong>Linkado</strong> - Organize e visualize seus links em cards interativos.
+                      Escolha thumbnails automáticas ou personalizadas e agrupe por seções.
+                      Salve, faça backup e recupere seus links facilmente.
+                    </p>
+
+                    <div id="socialLinks" class="d-flex justify-content-start gap-3">
+                      <a href="https://github.com/Mateus-Cimini" target="_blank" class="social-link">
+                        <i class="bi bi-github" style="font-size: 20px;"></i>
+                      </a>
+                      <a href="https://instagram.com/@mateus.cimini" target="_blank" class="social-link">
+                        <i class="bi bi-instagram" style="font-size: 20px;"></i>
+                      </a>
+                      <a href="mailto:mateusmateus122333@gmail.com" target="_blank" class="social-link">
+                        <i class="bi bi-envelope-fill" style="font-size: 20px;"></i>
+                      </a>
+                    </div>
+                  </div>
+
+
+
+                  <div class="footerSupport col-12 col-sm-6 col-lg-4 ">
+                    <h4>Suporte</h4>
+                    <button class="btn" data-bs-toggle="modal" data-bs-target="#howItWorks">Como funciona?</button>
+                    <button class="btn" data-bs-toggle="modal" data-bs-target="#whoHasAcess">Quem tem acesso?</button>
+                    <button class="btn" data-bs-toggle="modal" data-bs-target="#savedData">Por quanto tempo os dados ficam guardados?</button>
+                    <a href="mailto:mateusmateus122333@gmail.com" target="_blank" class="btn">Reportar bug</a>
+                  </div>
+
+                  <!-- Modais do suporte -->
+                  <!-- Modal Como funciona -->
+                  <div id="howItWorks" class="modal fade">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title">Como funciona?</h5>
+                          <button class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                          <ol>
+                            <li><strong>Adicionar:</strong> link preencha o título, link do vídeo e, opcionalmente, um link de imagem personalizada. Escolha a seção onde o card será colocado e clique em "Adicionar".</li>
+                            <li><strong>Editar ou excluir:</strong> use os botões no card para alterar informações ou remover vídeos.</li>
+                            <li><strong>Seções:</strong> organize seus vídeos em diferentes seções para facilitar a visualização.</li>
+                            <li><strong>Backup:</strong> você pode exportar todos os vídeos como JSON para salvar, e importar depois para restaurar seus cards.</li>
+                          </ol>
+                        </div>
+                        <div class="modal-footer">
+                          <button class="btn btn-danger" data-bs-dismiss="modal">Voltar</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Modal Quem tem acesso -->
+                  <div id="whoHasAcess" class="modal fade">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title">Quem tem acesso?</h5>
+                          <button class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                          <p>Todos os links adicionados ficam <strong>somente no seu navegador</strong> e não são compartilhados com ninguém. Nenhum dado é enviado para servidores externos, garantindo que seus vídeos e informações permaneçam privados.</p>
+                        </div>
+                        <div class="modal-footer">
+                          <button class="btn btn-danger" data-bs-dismiss="modal">Voltar</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+
+
+                  <!-- Por quanto tempo os dados ficam salvos -->
+                  <div id="savedData" class="modal fade">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title">Por quanto tempo os dados ficam salvos?</h5>
+                          <button class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                          <p>Os dados ficam salvos no seu navegador <strong>indefinidamente</strong>, enquanto você não limpar o <code>localStorage</code>.</p>
+                          <p>Mesmo fechando ou reiniciando o navegador, seus cards permanecem disponíveis. Mas nunca apague o cache antes de fazer backup</p>
+                        </div>
+                        <div class="modal-footer">
+                          <button class="btn btn-danger" data-bs-dismiss="modal">Voltar</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+
+
+
+
+                  <div class="footerOthers col-12 col-sm-6 col-lg-3">
+                    <h4>Outros projetos</h4>
+                    <a href="https://young-rift.vercel.app/" target="_blank">Young-Rift</a>
+                    <a href="https://montando-sua-pool-6tvh.vercel.app/" target="_blank">Montando sua Pool</a>
+                    <a href="https://calcula-media-enem.vercel.app/" target="_blank">Calculadora media ENEN</a>
+                  </div>
+                </div>
+              </div>
             </div>
-          </div>
-        </footer>
-      </section>
 
-    </div>
 
-  <div class="toast-container position-fixed bottom-0 end-0 p-3">
-    <div id="myToast" data-bs-autohide="false" class="toast">
+            <div class="container">
+              <div class="footerEmail row">
+                <div class="text col-12 col-sm-6 col-lg-6">
+                  <h4>Este é um projeto de portfólio</h4>
+                  <p>Para demonstrar minhas habilidades em front-end.
+                    Quer entrar em contato? Deixe seu e-mail e eu retornarei assim que possível.</p>
+                </div>
+                <div class="form col-12 col-lg-6 col-sm-6">
+                  <form class="contentFormEmail d-flex gap-2">
+                    <div id="formEmail">
+                      <label class="visually-hidden" for="inputEmail">Seu melhor e-mail</label>
+                      <input type="email" id="inputEmail" class="form-control" placeholder="Seu melhor e-mail">
+                    </div>
+
+                    <div class="formBtn">  
+                      <button type="submit" class="btn">Enviar</button>
+                    </div>
+
+                  </form>
+                </div>
+              </div>
+
+
+            </div>
+            <div class="footerEnd">
+              <div class="container">
+                <p>© 2025 Linkado. Todos os direitos reservados.</p>
+              </div>
+            </div>
+          </footer>
+        </section>
+
+      </div>
+
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+      <div id="myToast" data-bs-autohide="false" class="toast">
       <header class="toast-header">
         <strong>Não perca tempo!</strong>
       </header>

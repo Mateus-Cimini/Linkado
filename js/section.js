@@ -1,4 +1,5 @@
 import { renderCards } from "./cards.js";
+import { attCounter } from "./cards.js";
 
 export let sections = JSON.parse(localStorage.getItem("sections")) || [];
 
@@ -13,7 +14,7 @@ export function renderSectionButtons() {
 
   // botões dinâmicos das seções
   sections.forEach(section => {
-    const btnHTML = `
+    const btnHTML = $(`
       <div class="col-12 col-md-4 col-lg-3">
         <div class="btn-group w-100" role="group">
           <button class="btn tab-btn btn-outline-primary flex-grow d-flex justify-content-center" data-section="${section}">${section}</button>
@@ -22,8 +23,9 @@ export function renderSectionButtons() {
           </button>
         </div> 
       </div>
-    `;
+    `).hide();
     container.append(btnHTML)
+    btnHTML.fadeIn(700);
   });
 }
 
@@ -36,16 +38,21 @@ $('#btnAddSection').on('click', function() {
     $("#inputAddSection").val('');
     updateSectionSelect();
     renderSectionButtons();
+    attCounter();
   }
 });
 
 // Função do botão de apagar seção
 $(document).on('click', '.deleteSection', function() {
   const sectionName = $(this).data('section');
-  sections = sections.filter(sec => sec !== sectionName);
-  saveSections();
-  renderSectionButtons();
-  updateSectionSelect();
+  const sectionEl = $(this).closest('.col-12');
+  sectionEl.fadeOut(400, function() {
+    sections = sections.filter(sec => sec !== sectionName);
+    saveSections();
+    renderSectionButtons();
+    updateSectionSelect();
+    attCounter();
+  });
 });
 
 // Atualiza o select de seções no modal de link

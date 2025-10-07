@@ -13,7 +13,13 @@ export function renderCards(filterSection = "All") {
     ? arrayCards
     : arrayCards.filter(card => card.section === filterSection);
 
-  cardsToRender.forEach(card => containerCards.append(createCardHTML(card)));
+  cardsToRender.forEach(card => {
+    const cardEl = $(createCardHTML(card)).hide();
+    containerCards.append(cardEl);
+    cardEl.fadeIn(400);
+    attCounter();
+  });
+  
 }
 
 // FUNÇÕES AUXILIARES
@@ -188,8 +194,14 @@ function clearStorage() {
 // INICIALIZAÇÃO DE EVENTOS
 export function initCards() {
   $(document).on('click', '.deleteCard', function() {
-    deleteCard(Number($(this).data('id')));
-    attCounter();
+
+    const card = $(this).closest('.card');
+    const cardId = Number($(this).data('id'))
+    card.fadeOut(400, function() {
+      card.remove();
+      deleteCard(cardId);
+      attCounter();
+    });
   });
 
   $(document).on('click', '.editCard', function() {
@@ -253,7 +265,7 @@ export function initCards() {
 
 // iNFO HOME
 
-function attCounter() {
+export function attCounter() {
   const totalCards = arrayCards;
   const totalSections = JSON.parse(localStorage.getItem('sections')) || [];
   const totalFavorite = arrayCards.filter(card => card.favorite);
