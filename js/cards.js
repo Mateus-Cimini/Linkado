@@ -110,6 +110,35 @@ function editCard(id) {
   }, { once: true });
 }
 
+// FUNÇÕES DE GERENCIALEMTO GERAL
+
+
+// gera backup
+function exportBackup() {
+  $(document).on('click', '#btnExport', function() {
+    location.reload();
+    console.log('salvando backup')
+  });
+}
+
+// importa o backup
+function importBackup() {
+  $(document).on('click', '#btnImport', function() {
+    location.reload();
+    console.log('importando backup');
+  });
+}
+
+// limpa localStorage
+function clearStorage() {
+  $(document).on('click', '#btnClear', function() {
+    localStorage.clear();
+    location.reload();
+    console.log('apaga tudo');
+  });
+}
+
+
 // INICIALIZAÇÃO DE EVENTOS
 export function initCards() {
   $(document).on('click', '.deleteCard', function() {
@@ -169,5 +198,8 @@ $(document).ready(() => {
   renderSectionButtons();
   renderCards('All');
   initTags();
+  exportBackup();
+  importBackup();
+  clearStorage();
 });
 
