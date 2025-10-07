@@ -4,6 +4,28 @@ import { renderSectionButtons, sections, updateSectionSelect } from "./section.j
 // Array de cards
 export let arrayCards = JSON.parse(localStorage.getItem("cards")) || [];
 
+let cardsToShow;
+
+function setCardsToShow() {
+  const width = window.innerWidth;
+
+  if (width < 768) {
+    cardsToShow = 3;
+  } else if (width < 992) {
+    cardsToShow = 4;
+  } else {
+    cardsToShow = 6;
+  }
+}
+
+setCardsToShow();
+renderCards();
+
+$(window).on('resize', function() {
+  setCardsToShow();
+  renderCards();
+});
+
 // FUNÇÃO DE RENDERIZAÇÃO
 export function renderCards(filterSection = "All") {
   const containerCards = $('#cardsContainer');
@@ -13,13 +35,25 @@ export function renderCards(filterSection = "All") {
     ? arrayCards
     : arrayCards.filter(card => card.section === filterSection);
 
-  cardsToRender.forEach(card => {
+  const visibleCards = cardsToRender.slice(0, cardsToShow);
+
+  visibleCards.forEach(card => {
     const cardEl = $(createCardHTML(card)).hide();
     containerCards.append(cardEl);
     cardEl.fadeIn(400);
     attCounter();
   });
+
+  if (cardsToRender.length > cardsToShow) {
+    $('#readMore').show();
+  } else {
+    $('#readMore').hide();
+  }
   
+  $(document).off('click', '#btnLoadMore').on('click', '#btnLoadMore', function() {
+    cardsToShow += 3;
+    renderCards();
+  })
 }
 
 // FUNÇÕES AUXILIARES
