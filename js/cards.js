@@ -25,7 +25,7 @@ function createCardHTML(card) {
           <img class="cardImg" src="${card.thumb || 'https://placehold.co/318x187'}" alt="imagem de exemplo">
         </a>
         <div class="card-body">
-          <div class="star d-flex justify-content-end">
+          <div class="star d-flex justify-content-end ${card.favorite ? 'active' : ''}">
             <i class="bi bi-star-fill"></i>
           </div>
           ${Array.isArray(card.tags) ? card.tags.map(tag => `<button class="btn tag-btn">${tag}</button>`).join('') : ''}
@@ -119,10 +119,13 @@ function exportBackup() {
     const data = JSON.stringify(localStorage, null, 2); // formata com indentação
     const blob = new Blob([data], { type: 'application/json' }); // cria um blob(arquivo temporario na memmoria do navegador)
     const url = URL.createObjectURL(blob); // cria um link temporario
-
+    
+    const fileName = prompt("Digite o nome do arquivo:", "backup_localStorage");
+    if (!fileName) return;
+  
     const a = document.createElement('a'); // cria um <a> dinamico js
     a.href = url; // define o href para o arquivo
-    a.download = 'backup_localStorage.json'; // define o nome do arquivo
+    a.download = `${fileName}.json`; // define o nome do arquivo
     a.click(); // clica automaticamente gerando o download
 
     URL.revokeObjectURL(url) // remove da memoria o link temporario
@@ -166,15 +169,18 @@ function importBackup() {
 
     input.click(); // abre o seletor de arquivo
     console.log('importando backup');
+    attCounter();
   });
 }
 
 // limpa localStorage
 function clearStorage() {
   $(document).on('click', '#btnClear', function() {
+    alert('Você apagou tudo')
     localStorage.clear();
     location.reload();
     console.log('apaga tudo');
+    attCounter();
   });
 }
 
@@ -183,6 +189,7 @@ function clearStorage() {
 export function initCards() {
   $(document).on('click', '.deleteCard', function() {
     deleteCard(Number($(this).data('id')));
+    attCounter();
   });
 
   $(document).on('click', '.editCard', function() {
@@ -192,6 +199,17 @@ export function initCards() {
   $(document).on('click', '.star', function(e) {
     e.stopPropagation();
     $(this).toggleClass("active");
+
+    const cardId = Number($(this).closest('.card').find('.editCard').data('id'));
+    if (!cardId) return;
+
+    const cardIndex = arrayCards.findIndex(c => c.id === cardId);
+    if (cardIndex === -1) return;
+
+    arrayCards[cardIndex].favorite = !arrayCards[cardIndex].favorite;
+
+    localStorage.setItem('cards', JSON.stringify(arrayCards));
+    attCounter();
   });
 
   const form = document.getElementById('formLink');
@@ -233,6 +251,17 @@ export function initCards() {
   });
 }
 
+// iNFO HOME
+
+function attCounter() {
+  const totalCards = arrayCards;
+  const totalSections = JSON.parse(localStorage.getItem('sections')) || [];
+  const totalFavorite = arrayCards.filter(card => card.favorite);
+  document.getElementById('numberPlaylist').textContent = totalSections.length;
+  document.getElementById('numberCards').textContent = totalCards.length;
+  document.getElementById('numberFavorite').textContent = totalFavorite.length;
+}
+
 // Inicialização
 $(document).ready(() => {
   renderSectionButtons();
@@ -241,5 +270,6 @@ $(document).ready(() => {
   exportBackup();
   importBackup();
   clearStorage();
+  attCounter();
 });
 
