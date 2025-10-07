@@ -260,7 +260,33 @@ function attCounter() {
   document.getElementById('numberPlaylist').textContent = totalSections.length;
   document.getElementById('numberCards').textContent = totalCards.length;
   document.getElementById('numberFavorite').textContent = totalFavorite.length;
+  updateBadge();
 }
+
+// BADGE
+function updateBadge() {
+  const totalCards = arrayCards.length;
+  const totalSections = JSON.parse(localStorage.getItem('sections'))?.length || 0;
+  const totalFavorite = arrayCards.filter(card => card.favorite).length;
+
+  const phrases = [
+    `${totalCards} cards foram adicionados`,
+    `${totalFavorite} favoritos estão ativos`,
+    `${totalSections} playlists disponíveis`,
+    `Você adicionou ${totalCards} links`,
+    `Keep going! Já são ${totalCards} cards!`  
+  ];
+  
+  const badge = document.querySelector('.custom-badge');
+  const randomIndex = Math.floor(Math.random() * phrases.length);
+  badge.innerHTML = `<i class="bi bi-stars"></i> ${phrases[randomIndex]}`;
+}
+
+$(document).ready(() => {
+  updateBadge();
+});
+
+
 
 // Inicialização
 $(document).ready(() => {
