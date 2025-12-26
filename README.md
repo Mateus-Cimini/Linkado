@@ -1,5 +1,7 @@
 # Linkdado
 
+## Seus links salvos com segurança
+
 Projeto desenvolvido com o objetivo de praticar e aplicar diversos recursos de HTML, CSS, JavaScript, jQuery e Bootstrap, criando um repositório pessoal de links onde o usuário pode salvar seus links no **localStorage** do navegador. Os links são salvos em **cards personalizados** com título, descrição, data e hora, tags e podem ser organizados por seções.  
 
 O projeto oferece funcionalidades de backup e restauração de dados via **JSON**, além de permitir apagar todos os dados com apenas 1 clique, garantindo um repositório pessoal seguro e prático.
