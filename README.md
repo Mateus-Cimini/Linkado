@@ -68,7 +68,49 @@ README.md
 Contribuições são bem-vindas! Você pode clonar o repositório e enviar pull requests:  
 [Repositório GitHub](https://github.com/Mateus-Cimini/Linkado)  
 
---
+---
+
+## 🔭 Recomendações priorizadas de evolução
+
+### 🟢 Melhorias rápidas (baixo esforço)
+
+- **Confirmação de ações críticas**  
+  Implementar um modal de confirmação antes da ação **“Apagar todos os dados”**, evitando perda acidental de informações.  
+  **Benefício:** melhora a segurança e a experiência do usuário.
+
+- **Refatoração para Vanilla JavaScript**  
+  Remover a dependência do jQuery, substituindo seletores `$` por `querySelector` e `addEventListener`.  
+  **Benefício:** demonstra domínio profundo de JavaScript puro e modernização de código legado.
+
+- **Uso de imagens no README**  
+  Adicionar capturas de tela e GIFs da interface em funcionamento diretamente na documentação do GitHub.  
+  **Benefício:** aumenta a clareza do projeto e melhora a apresentação para recrutadores.
+
+---
+
+### 🟡 Melhorias de médio impacto
+
+- **Migração para framework moderno**  
+  Reconstruir a interface utilizando **React**, **Angular** ou **Svelte**.  
+  **Benefício:** evidencia alinhamento com ferramentas exigidas pelo mercado frontend atual.
+
+- **Substituição do LocalStorage**  
+  Utilizar **IndexedDB** para armazenamento offline mais robusto ou integrar com APIs como **Google Drive / Google Sheets** para persistência em nuvem sem backend próprio.  
+  **Benefício:** melhora escalabilidade, segurança e confiabilidade dos dados.
+
+---
+
+### 🔵 Diferenciais avançados (opcionais)
+
+- **Autenticação de usuários**  
+  Implementar login (ex: Firebase Auth ou Google Auth) para permitir acesso aos links em qualquer dispositivo.  
+  **Benefício:** transforma o projeto em uma aplicação multiusuário real.
+
+- **Arquitetura de componentes**  
+  Transformar cards e formulários em componentes reutilizáveis com propriedades (props).  
+  **Benefício:** melhora manutenibilidade, reutilização de código e escalabilidade da aplicação.
+
+---
 
 ## Licença
 
